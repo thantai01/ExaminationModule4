@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Examination Module 4</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="component.js"></script>
+
+</head>
+<body>
+    Hello Every One
+    <div class="container">
+        <div class="row" id="row1"></div>
+        <div class="row" id="row2">
+            <span>
+                <button class="btn btn-success" onclick="printCountryTable()">Show Countries List</button>
+                <button class="btn btn-success" onclick="printCitiesTable()">Show Cities List</button>
+                <button class="btn btn-success" onclick="addCity()">Add City To List</button>
+            </span>
+        </div>
+
+        <div class="row" id="row3">
+            <div class="table" id="table"></div>
+        </div>
+    </div>
+</body>
+</html>
