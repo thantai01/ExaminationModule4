@@ -22,7 +22,7 @@ public class CountryControllerAPI {
         return new ResponseEntity<>(iterable, HttpStatus.OK);
     }
     @GetMapping("/countries/{id}")
-    public ResponseEntity<Optional<Country>> findByOne(@PathVariable long id) {
+    public ResponseEntity<Optional<Country>> findOneById(@PathVariable long id) {
         Optional<Country> selected = countryService.findOneById(id);
         if(selected.isPresent()) {
             return new ResponseEntity<>(selected,HttpStatus.OK);

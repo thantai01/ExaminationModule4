@@ -49,6 +49,7 @@ function printCitiesTable() {
             }
             html += `</table>`
             document.getElementById("table").innerHTML = html;
+
         },
         error: function (error) {
             console.log(error);
@@ -63,11 +64,34 @@ function renderCountryList() {
         success: function (countries) {
             console.log(countries)
             let html = ``;
+            html+=`<select >`
             html+=`<option>----Select----</option>`;
             for(let i=0;i<countries.length;i++) {
                 html+=`<option value="${countries[i].id}"> ${countries[i].countryName} </option>`
             }
+            html+=`</select>`
             document.getElementById("country").innerHTML = html;
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    })
+}
+
+function renderCountryById(id) {
+    $.ajax({
+        type: "GET",
+        url:  "http://localhost:8080/api/countries/" + id ,
+        success: function (country) {
+            console.log(country)
+            let html = ``;
+            html+=`<select >`
+            html+=`<option>----Select----</option>`;
+            for(let i=0;i<country.length;i++) {
+                html+=`<option value="${countries[i].id}"> ${countries[i].countryName} </option>`
+            }
+            html+=`</select>`
+            document.getElementById("country1").innerHTML = html;
         },
         error: function (error) {
             console.log(error);
@@ -187,10 +211,80 @@ function printUpdateForm(id) {
         },
         url: "http://localhost:8080/api/cities/" + id + "/detail",
         success: function (city) {
-            for(let i = 0; i < city.length; i++) {
-                html += ``
+            console.log(city)
+                let countryId = city.country.id;
+                html += `<div class="row mb-4">
+                            <div class="col">
+                              <div class="form-outline">
+                                <input type="text" id="city1" class="form-control" value="${city.cityName}"/>
+                                <label class="form-label" for="city1">City</label>
+                              </div>
+                            </div>
+                            <div class="col">
+                              <div class="form-outline">
+                                <select  id="country" class="form-control"> <option value="${city.country.countryName}"> </option> </select> 
+                                <label class="form-label" for="country" >Country</label>
+                              </div>
+                            </div>
+                          </div>`;
 
-            }
+                html += `<div class="row mb-4">
+                           <div class="col">
+                          <div class="form-outline">
+                            <input type="text" id="gdp1" class="form-control" value="${city.gpd}" /> 
+                            <label class="form-label" for="gdp1">GDP</label>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="form-outline">
+                            <input type="text" id="population1" class="form-control"  value="${city.population}" /> 
+                            <label class="form-label" for="population1">Population</label>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="form-outline">
+                            <input type="text" id="square1" class="form-control" value="${city.square}"/>
+                            <label class="form-label" for="square1">Square</label>
+                          </div>
+                        </div>
+                      </div>`;
+                html += `<div class="form-outline mb-4">
+                            <textarea class="form-control" id="description1" rows="4" > ${city.description} </textarea>
+                            <label class="form-label" for="description1">Description</label>
+                        </div>`;
+                html += `<button class="btn btn-primary btn-block mb-4" onclick="putNewCity(${city.id})">Save</button>`;
+                renderCountryList();
+            document.getElementById("table").innerHTML = html;
+        }
+    })
+}
+
+function putNewCity(id) {
+    let city = {
+        cityName: document.getElementById("city1").value,
+        country: {
+            id: document.getElementById("country").value
+        },
+        gpd: document.getElementById("gdp1").value,
+        square: document.getElementById("square1").value,
+        population: document.getElementById("population1").value,
+        description: document.getElementById("description1").value,
+        image: "URL"
+    }
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-type': 'application/json'
+        },
+        type:"PUT",
+        data: JSON.stringify(city),
+        url: "http://localhost:8080/api/cities/" + id + "/edit" ,
+        success: function () {
+            alert("Edited Successfully");
+            printCitiesTable();
+        },
+        error: function (error) {
+            console.log(error)
         }
     })
 }
