@@ -288,3 +288,20 @@ function putNewCity(id) {
         }
     })
 }
+
+function getTikiMotorProduct() {
+    let html = `<table class="table">`;
+    html += `<tr><th>Keyword</th><th>Link</th></tr>`
+    $.ajax({
+        type: "GET",
+        url: "https://tiki.vn/api/shopping/v2/featured_keywords?page_name=Category&category_id=11888",
+        success: function (motors) {
+            console.log(motors);
+            for(let i = 0;i < motors.data.length;i++) {
+                html += `<tr><td>${motors.data[i].keyword}</td><td><a href="${motors.data[i].url}">Go to search page</a></td></tr>`
+            }
+            html +=`</table>`
+            document.getElementById("table").innerHTML = html;
+        }
+    })
+}
