@@ -29,4 +29,9 @@ public class CountryControllerAPI {
         }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    @PostMapping("/countries")
+    public ResponseEntity<Void> create(@RequestBody Country country) {
+        countryService.save(country);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
 }
