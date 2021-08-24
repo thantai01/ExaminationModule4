@@ -9,18 +9,15 @@ import javax.persistence.*;
 @Getter @Setter
 public class District {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    private String division_type;
-    private String codename;
     @ManyToOne
     private Province province;
 
-    public District(String name, String division_type, String codename, Province province) {
+    public District(long id, String name, Province province) {
+        this.id = id;
         this.name = name;
-        this.division_type = division_type;
-        this.codename = codename;
         this.province = province;
     }
 

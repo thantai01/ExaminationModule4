@@ -26,12 +26,12 @@ public class DistrictServiceImpl implements IDistrictService{
 
     @Override
     public District save(District district) {
-        return null;
+        return districtRepository.save(district);
     }
 
     @Override
     public void delete(long id) {
-
+        districtRepository.deleteById(id);
     }
 
     @Override

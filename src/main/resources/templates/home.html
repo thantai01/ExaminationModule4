@@ -7,6 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="component.js"></script>
+    <script src="data.js"></script>
 
 </head>
 <body>
@@ -15,10 +16,15 @@
         <div class="row" id="row1"></div>
         <div class="row" id="row2">
             <span>
-                <button class="btn btn-success" onclick="printCountryTable()">Show Countries List</button>
-                <button class="btn btn-success" onclick="printCitiesTable()">Show Cities List</button>
-                <button class="btn btn-success" onclick="printAddForm();renderCountryList()">Add City To List</button>
-                <button class="btn btn-success" onclick="getTikiMotorProduct()">Tiki Motor Products</button>
+<!--                <button class="btn btn-success" onclick="printCountryTable()">Show Countries List</button>-->
+<!--                <button class="btn btn-success" onclick="printCitiesTable()">Show Cities List</button>-->
+<!--                <button class="btn btn-success" onclick="printAddForm();renderCountryList()">Add City To List</button>-->
+<!--                <button class="btn btn-success" onclick="getTikiMotorProduct()">Tiki Motor Products</button>-->
+                <button class="btn btn-success" onclick="createProvinceData()">Get Province</button>
+                <button class="btn btn-success" onclick="createDistrictData()">Get District</button>
+                <button class="btn btn-success" onclick="createWardData()">Get Ward</button>
+
+
             </span>
         </div>
         <div class="row" id="row3">

@@ -12,17 +12,14 @@ import javax.persistence.Id;
 @Getter @Setter
 public class Province {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    private String division_type;
-    private String codename;
     private int phone_code;
 
-    public Province(String name, String division_type, String codename, int phone_code) {
+    public Province(long id, String name, int phone_code) {
+        this.id = id;
         this.name = name;
-        this.division_type = division_type;
-        this.codename = codename;
         this.phone_code = phone_code;
     }
 
